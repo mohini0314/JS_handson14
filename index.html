@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Closures</title>
+</head>
+<body>
+    <h1> 1) Problem: </h1>
+    <pre>
+          function counter(){
+        var counter = 0;
+        function IncreaseCounter() {
+            return counter += 1;
+        };
+        return IncreaseCounter;
+    }
+    
+    var counter = counter();
+    alert(counter());
+    alert(counter());
+    alert(counter());
+    alert(counter());
+    </pre>
+    <h2>
+      output : <br>
+      1 <br>
+      2 <br>
+      3 <br>
+      4 <br>
+      5 <br>
+    </h2>
+   
+
+    <h1> 2)Problem:</h1>
+    <pre>
+      let count = 0;
+      (function () {
+      if (count === 0) {
+        let count = 1;
+        console.log(count); // What is logged?
+        }
+        console.log(count); // What is logged?
+      })();
+    </pre>
+    <h2>
+      output : <br>
+      0 <br>
+      1 <br>
+     
+    </h2>
+
+    <h1> 3)Problem:</h1>
+    <pre>
+      for (var i = 0; i < 3; i++) {
+        setTimeout(function log() {
+          console.log(i); // What is logged?
+        }, 1000);
+      }
+    </pre>
+    <h2>
+      output : <br>
+      3 <br>
+      3 <br>
+      3 <br>
+    </h2>
+
+    <h1> 4)Problem:</h1>
+    <p>Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter <br>
+      length and inner function should accept parameter breadth.</p>
+    <pre>
+      function OutFunc() {
+        let  l = 10;
+        function InFunc() {
+            let w = 2;
+            let area = l * w;
+            console.log(area);
+        }
+        return InFunc;
+      }
+      let innerFunc = OutFunc();
+      innerFunc();
+     
+    </pre>
+    <h2>
+      output :  20 <br>
+    </h2>
+
+    <h1> 5)Problem:</h1>
+    <p>Take a variable in outer function and create an inner function to increase the counter every time it is called</p>
+    <pre>
+      function outerFunction(){
+        let x = 0;
+        function innerFunction(){
+          return  x += 1;
+        }
+        return innerFunction;
+      }
+      let result = outerFunction();
+      console.log(result());
+    </pre>
+    <h2>
+      output : 1
+    </h2>
+
+    <h1> 6)Problem:</h1>
+    <pre>
+      Print Output
+      var a = 12;
+      (function () {
+        alert(a);
+      })();
+    </pre>
+    <h2>
+      output : window pop up with no.-  12
+    </h2>
+
+    <h1> 7)Problem:</h1>
+    <pre>
+      var a = 10;
+      var x = (function () {
+        var a = 12;
+        return function () {
+          alert(a);
+        };
+      })();
+      x();
+    </pre>
+    <h2>
+      output : window pop up with no.-  12
+    </h2>
+
+    <h1> 8)Problem:</h1>
+    <pre>
+      var globalVar = "xyz";
+      (function outerFunc(outerArg) {
+        var outerVar = 'a';
+        (function innerFunc(innerArg) {
+          var innerVar = 'b';
+          console.log(
+        "outerArg = " + outerArg + "\n" +
+        "innerArg = " + innerArg + "\n" +
+        "outerVar = " + outerVar + "\n" +
+        "innerVar = " + innerVar + "\n" +
+        "globalVar = " + globalVar);
+      })(456);
+      })(123);
+    </pre>
+    <h2>
+      Output: outerArg = 123 <br>
+      innerArg = 456 <br>
+      outerVar = a <br>
+      innerVar = b <br>
+      globalVar = xyz <br>
+    </h2>
+    <script src="index.js"></script>
+</body>
+</html>

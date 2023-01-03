@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+    border: 5px groove blueviolet;
+}
+h1{
+    color: wheat;
+}
+h2{
+    color: rgb(237, 178, 106);
+}
+pre{
+    color: rgb(47, 231, 185);
+    font-size: 20px;
+}
+p{
+    color: wheat;
+    font-size: 20px;
+}
